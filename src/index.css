@@ -61,7 +61,7 @@ header h1 {
     margin: 0 auto;
     padding: 10rem 0;
 }
-@media (min-width: 768px) {
+@media (min-width: 968px) {
     .formulario {
         padding: 5rem 0;
         width: 60rem;
@@ -77,9 +77,17 @@ header h1 {
     padding-bottom: 1rem;
     border-bottom: 2px solid var(--azul);
 }
+
 .formulario .campo {
     display: grid;
     margin-bottom: 2rem;
+}
+
+@media (max-width: 468px) {
+    .formulario input[type="text"] {
+        display: inline-block;
+        width: 100%;
+    }
 }
 
 .formulario label {
