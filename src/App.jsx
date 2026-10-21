@@ -3,18 +3,12 @@ import Header from "./components/Header";
 import Filtros from "./components/Filtros";
 import ListadoGastos from "./components/ListadoGastos";
 import Modal from "./components/Modal";
-import { generarId } from "./helpers";
+import { generarId, leerGastosLS, leerPresupuestoLS } from "./helpers";
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
 
 function App() {
-  const [gastos, setGastos] = useState(
-    localStorage.getItem("gastos")
-      ? JSON.parse(localStorage.getItem("gastos"))
-      : []
-  );
-  const [presupuesto, setPresupuesto] = useState(
-    Number(localStorage.getItem("presupuesto")) ?? 0
-  );
+  const [gastos, setGastos] = useState(leerGastosLS);
+  const [presupuesto, setPresupuesto] = useState(leerPresupuestoLS);
   const [isValidPresupuesto, setIsValidPresupuesto] = useState(false);
 
   const [modal, setModal] = useState(false);
@@ -38,7 +32,7 @@ function App() {
   }, [presupuesto]);
 
   useEffect(() => {
-    localStorage.setItem("gastos", JSON.stringify(gastos) ?? []);
+    localStorage.setItem("gastos", JSON.stringify(gastos));
   }, [gastos]);
 
   useEffect(()=>{//Filtrado de gastos por Categoria
@@ -52,8 +46,7 @@ function App() {
 /* Checking if there is a presupuesto in the local storage and if there is, it sets the state of
 isValidPresupuesto to true. */
   useEffect(() => {
-    const presupuestoLS = Number(localStorage.getItem("presupuesto")) ?? 0;
-    if (presupuestoLS > 0) {
+    if (leerPresupuestoLS() > 0) {
       setIsValidPresupuesto(true);
     }
   }, []);

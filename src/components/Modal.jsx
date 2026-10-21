@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import Mensaje from "./Mensaje";
+import { esCantidadValida } from "../helpers";
 import CerrarBtn from "../img/cerrar.svg";
 
 const Modal = ({
@@ -41,6 +42,15 @@ const Modal = ({
 
     if ([nombre, cantidad, categoria].includes("")) {
       setMensaje("Todos los campos son obligatorios");
+
+      setTimeout(() => {
+        setMensaje("");
+      }, 2000);
+      return;
+    }
+
+    if (!esCantidadValida(cantidad)) {
+      setMensaje("La cantidad debe ser mayor a 0");
 
       setTimeout(() => {
         setMensaje("");

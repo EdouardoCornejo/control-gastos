@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Mensaje from "./Mensaje";
+import { esCantidadValida } from "../helpers";
 
 const NuevoPresupuesto = ({
   presupuesto,
@@ -11,7 +12,7 @@ const NuevoPresupuesto = ({
   const handlePresupuesto = (e) => {
     e.preventDefault();
 
-    if (!presupuesto || presupuesto < 0) {
+    if (!esCantidadValida(presupuesto)) {
       setMensaje("No es un Presupuesto valido");
       return;
     }
