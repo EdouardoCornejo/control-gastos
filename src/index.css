@@ -238,6 +238,30 @@ header h1 {
     background-color: #c71465;
     cursor: pointer;
 }
+.confirmar-reset {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.confirmar-reset p {
+    margin: 0;
+    text-align: center;
+    font-weight: 700;
+}
+.cancelar-reset {
+    border: none;
+    background-color: var(--gris);
+    padding: 1rem;
+    width: 100%;
+    color: var(--blanco);
+    text-transform: uppercase;
+    font-weight: 900;
+    border-radius: 1rem;
+    cursor: pointer;
+}
+.cancelar-reset:hover {
+    background-color: var(--gris-oscuro);
+}
 
 main {
     padding-top: 10rem;

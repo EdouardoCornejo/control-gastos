@@ -39,13 +39,13 @@ const ControlPresupuesto = ({
     });
   };
 
+  // Confirmacion en la UI: confirm() no funciona dentro de iframes sin allow-modals
+  const [confirmarReset, setConfirmarReset] = useState(false);
+
   const handleResetApp = () => {
-    const resultado = confirm("¿Deseas reiniciar presupuesto y gastos?");
-    if (resultado) {
-      setGastos([]);
-      setPresupuesto(0);
-      setIsValidPresupuesto(false)
-    }
+    setGastos([]);
+    setPresupuesto(0);
+    setIsValidPresupuesto(false)
   };
 
   return (
@@ -62,9 +62,21 @@ const ControlPresupuesto = ({
         />
       </div>
       <div className="contenido-presupuesto">
-        <button className="reset-app" type="button" onClick={handleResetApp}>
-          Resetear App
-        </button>
+        {confirmarReset ? (
+          <div className="confirmar-reset">
+            <p>¿Deseas reiniciar presupuesto y gastos?</p>
+            <button className="reset-app" type="button" onClick={handleResetApp}>
+              Sí, reiniciar
+            </button>
+            <button className="cancelar-reset" type="button" onClick={() => setConfirmarReset(false)}>
+              Cancelar
+            </button>
+          </div>
+        ) : (
+          <button className="reset-app" type="button" onClick={() => setConfirmarReset(true)}>
+            Resetear App
+          </button>
+        )}
         <p>
           <span>Presupuesto: </span> {formatearCantidad(presupuesto)}
         </p>
