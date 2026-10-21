@@ -2,7 +2,7 @@
 
 Expense tracker built with React and Vite. Set a budget, log your expenses by category and watch how much you have left in real time.
 
-**Demo:** DEMO_URL
+**Demo:** https://control-gastos-nine-sigma.vercel.app
 
 ## Features
 
