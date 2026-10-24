@@ -40,7 +40,7 @@ function App() {
       const gastosFiltrados = gastos.filter( gasto => gasto.categoria === filtro )
       setGastosFiltrados(gastosFiltrados)
     }
-  },[filtro])
+  },[filtro, gastos])
 
 //LS del Presupuesto
 /* Checking if there is a presupuesto in the local storage and if there is, it sets the state of

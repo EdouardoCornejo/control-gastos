@@ -89,7 +89,7 @@ Componente raíz y dueño del estado:
 - `gastoEditar`: al recibir un gasto (desde el deslizamiento), un `useEffect` abre el modal en modo edición.
 - `guardarGasto(gasto)`: si tiene `id` lo reemplaza con `map`; si no, le asigna `generarId()` y `fecha = Date.now()` y lo añade.
 - `EliminarGasto(id)`: filtra el gasto de la lista.
-- `filtro` / `gastosFiltrados`: un `useEffect` sobre `filtro` calcula los gastos de la categoría elegida.
+- `filtro` / `gastosFiltrados`: un `useEffect` sobre `filtro` y `gastos` recalcula los gastos de la categoría elegida, también al añadir, editar o borrar uno.
 
 ### 2. `src/helpers/index.js`
 
@@ -177,7 +177,6 @@ control-gastos/
 │   │   └── index.js                # Id, fechas, validación y lectura de localStorage
 │   ├── img/                        # Iconos de categorías, cerrar y nuevo gasto (SVG)
 │   ├── App.jsx                     # Estado global y persistencia
-│   ├── App.css
 │   ├── index.css
 │   └── main.jsx
 ├── index.html
